@@ -23,7 +23,7 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="blue-grey" app absolute clipped-left>
+    <v-toolbar color="grey" app absolute clipped-left>
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
       <span class="title ml-3 mr-5">
         Blackship&nbsp;
@@ -51,6 +51,7 @@
 
 <script>
 export default {
+  name: 'layout',
   data: () => ({
     drawer: null,
     items: [
