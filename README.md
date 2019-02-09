@@ -1,4 +1,5 @@
 # vue-vuetify-storybook
+
 Experimenting the integration between Vue.js, Vuetify and Storybook.
 
 Some tools like Vue I18n and Vuex are also used in order to make the project similar
@@ -6,7 +7,7 @@ to what a real application would be.
 
 ## Dockerize for development
 
-``` bash
+```bash
 docker-compose up
 
 http://localhost:8080/ # App
@@ -18,13 +19,14 @@ http://localhost:8090/ # Mock Server
 ## Local Installation
 
 ### Project setup
+
 ```
 yarn install
 ```
 
 ### Available Commands
 
-``` bash
+```bash
 # Compiles and hot-reloads for development
 yarn serve
 
@@ -48,7 +50,9 @@ yarn test:unit
 ```
 
 ## Built With
+
 ### Base Tools
+
 - [Vue.js](https://vuejs.org/)
 - [Vue CLI 3](https://cli.vuejs.org/guide/)
 - [Vue Router](https://router.vuejs.org/)
@@ -58,24 +62,30 @@ yarn test:unit
 - [Docker](https://www.docker.com/)
 
 ### Internationalization
+
 - [Vue I18n](https://kazupon.github.io/vue-i18n/)
 
 ### Material Design
+
 - [Vuetify](https://vuetifyjs.com/en/)
 
 ### mock Server
+
 - [Mock Json Server](https://github.com/typicode/json-server)
 
 ### Analytics
+
 - Google Tag Manager
 - Google Analytics
 
 ### Testing
+
 - [Vue Test Utils](https://vue-test-utils.vuejs.org/)
 - [Jest](https://jestjs.io/)
 - [Cypress](https://www.cypress.io/)
 
 ### Documentation
+
 - [VuePress](https://vuepress.vuejs.org/)
 
 ## Versioning

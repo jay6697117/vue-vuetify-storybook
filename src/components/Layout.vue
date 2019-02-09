@@ -1,5 +1,5 @@
 <template>
-  <v-app id="blackship-admin">
+  <div class="blackship-admin-layout">
     <v-navigation-drawer v-model="drawer" fixed clipped class app>
       <v-list dense class>
         <template v-for="(item, i) in items">
@@ -58,7 +58,7 @@
         </v-layout>
       </v-container>
     </v-content>
-  </v-app>
+  </div>
 </template>
 
 <script>
