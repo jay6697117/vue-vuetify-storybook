@@ -1,5 +1,5 @@
 <template>
-  <div class="blackship-admin-layout">
+  <div class="layout">
     <v-navigation-drawer v-model="drawer" fixed clipped class app>
       <v-list dense class>
         <template v-for="(item, i) in items">
@@ -43,13 +43,7 @@
               <span>Source</span>
             </v-tooltip>
             <v-tooltip right>
-              <v-btn
-                slot="activator"
-                icon
-                large
-                href="https://codepen.io/johnjleider/pen/jZQNbd"
-                target="_blank"
-              >
+              <v-btn slot="activator" icon large href target="_blank">
                 <v-icon large>mdi-codepen</v-icon>
               </v-btn>
               <span>Codepen</span>
@@ -89,7 +83,7 @@ export default {
 </script>
 
 <style lang="stylus">
-#blackship-admin {
+#layout {
   .v-navigation-drawer__border {
     display: none;
   }
