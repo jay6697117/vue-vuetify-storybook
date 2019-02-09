@@ -1,7 +1,7 @@
 <template>
-  <div class="customer-list v-content">
+  <div class="package-list v-content">
     <div class="page" style="padding: 24px">
-      <div class="tag-H1 headline mb-4">Customers</div>
+      <div class="tag-H1 headline mb-4">Packages</div>
       <div class="v-card v-card--flat">
         <v-data-table
           :headers="headers"
@@ -13,16 +13,15 @@
           class="elevation-1"
         >
           <template slot="items" slot-scope="props">
-            <td>
-              <span class="subheading grey--text text--darken-3">
-                <strong>{{ props.item.name }}</strong>
-              </span>
-              &nbsp;
-              {{ props.item.city }},&nbsp;{{ props.item.country }}
+            <td>{{ props.item.packageId }}</td>
+            <td class="text-xs-left">{{ props.item.date }}</td>
+            <td class="text-xs-left">{{ props.item.customer }}</td>
+            <td class="text-xs-left">
+              <v-chip
+                :color="IsFulfilled(props.item.fulfillmentStatus) ? 'yellow lighten-3' : ''"
+              >{{props.item.fulfillmentStatus}}</v-chip>
             </td>
-            <td class="text-xs-left">{{ props.item.mailbox }}</td>
-            <td class="text-xs-right">{{ props.item.packages }}</td>
-            <td class="text-xs-right">{{ props.item.spent }}</td>
+            <td class="text-xs-right">{{ props.item.total }}</td>
           </template>
         </v-data-table>
       </div>
@@ -39,10 +38,11 @@ export default {
       loading: true,
       pagination: {},
       headers: [
-        { text: 'Name', value: 'name' },
-        { text: 'Mailbox', value: 'mailbox' },
-        { text: 'Packages', value: 'packages' },
-        { text: 'Spent', value: 'spent' }
+        { text: 'Package', value: 'packgeId' },
+        { text: 'Date', value: 'date' },
+        { text: 'Customer', value: 'customer' },
+        { text: 'Fulfillment status', value: 'fulfillmentStatus' },
+        { text: 'Total', value: 'total' }
       ]
     }
   },
@@ -64,6 +64,9 @@ export default {
     })
   },
   methods: {
+    IsFulfilled: function (fulfillmentStatus) {
+      return fulfillmentStatus === 'Fulfilled';
+    },
     getDataFromApi () {
       this.loading = true
       return new Promise((resolve, reject) => {
@@ -105,63 +108,24 @@ export default {
     getDesserts () {
       return [
         {
-          name: 'Matthew Perry',
-          city: 'Tokyo',
-          country: 'JP',
-          mailbox: 'R001853',
-          packages: '7 Packages',
-          spent: '$55 spent'
+          packageId: 'B001853',
+          date: 'Sep 3, 7:25 am',
+          customer: 'Max Hodges',
+          fulfillmentStatus: 'Fulfilled',
+          total: '$63.50'
         },
         {
-          name: 'Tilda Swinton',
-          city: 'London',
-          country: 'GB',
-          mailbox: 'R777777',
-          packages: '0 Packages',
-          spent: '$0 spent'
-        },
-        {
-          name: 'Marvin Gay',
-          city: 'Kowloon',
-          country: 'HK',
-          mailbox: 'R313481',
-          packages: '1 Packages',
-          spent: '$33 spent'
-        },
-        {
-          name: 'Micky Mouse',
-          city: 'Orlando',
-          country: 'US',
-          mailbox: 'R957846',
-          packages: '40 Packages',
-          spent: '$124 spent'
-        },
-        {
-          name: 'Giles Murray',
-          city: 'London',
-          country: 'GB',
-          mailbox: 'R987541',
-          packages: '1 Packages',
-          spent: '$28 spent'
-        },
-        {
-          name: 'Mika Tajima',
-          city: 'Osaka',
-          country: 'JP',
-          mailbox: 'R197212',
-          packages: '3 Packages',
-          spent: '$69 spent'
-        },
-        {
-          name: 'Pawel Pawlikowski',
-          city: 'Krakow',
-          country: 'PL',
-          mailbox: 'R212645',
-          packages: '1 Packages',
-          spent: '$48 spent'
+          packageId: 'B198781',
+          date: 'Sep 1, 10:10 am',
+          customer: 'Charlie Brown',
+          fulfillmentStatus: 'Unfulfilled',
+          total: '$33.21'
         }
       ]
     }
   }
 }
 </script>
+
+<style>
+</style>

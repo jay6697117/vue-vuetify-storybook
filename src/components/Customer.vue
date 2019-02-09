@@ -1,22 +1,35 @@
 <template>
-  <div class="customer-list">
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      :pagination.sync="pagination"
-      :total-items="totalDesserts"
-      :rows-per-page-items="[10,25,50, 100]"
-      :loading="loading"
-      class="elevation-1"
-    >
-      <template slot="items" slot-scope="props">
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-left">{{ props.item.city }}</td>
-        <td class="text-xs-left">{{ props.item.mailbox }}</td>
-        <td class="text-xs-right">{{ props.item.packages }}</td>
-        <td class="text-xs-right">{{ props.item.spent }}</td>
-      </template>
-    </v-data-table>
+  <div class="customer v-content">
+    <div class="page" style="padding: 24px">
+      <div class="tag-H1 headline mb-4">Matthew Perry</div>
+
+      <v-card class="v-card pa-3 mb-3">
+        <div class="title font-weight-medium">Matthew Perry</div>
+        <div class="py-1 grey--text text--darken-2">Tokyo, JP</div>
+        <div class="grey--text text--darken-2">Customer for 9 months</div>
+        <v-flex xs12 sm6>
+          <v-text-field label="Customer Note" hint="Add a note"></v-text-field>
+        </v-flex>
+      </v-card>
+
+      <v-data-table
+        :headers="headers"
+        :items="desserts"
+        :pagination.sync="pagination"
+        :total-items="totalDesserts"
+        :rows-per-page-items="[10,25,50, 100]"
+        :loading="loading"
+        class="elevation-1"
+      >
+        <template slot="items" slot-scope="props">
+          <td>{{ props.item.name }}</td>
+          <td class="text-xs-left">{{ props.item.city }}</td>
+          <td class="text-xs-left">{{ props.item.mailbox }}</td>
+          <td class="text-xs-right">{{ props.item.packages }}</td>
+          <td class="text-xs-right">{{ props.item.spent }}</td>
+        </template>
+      </v-data-table>
+    </div>
   </div>
 </template>
 
@@ -149,3 +162,10 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+.v-content {
+  background-color: #fafafa;
+  color: rgba(0, 0, 0, 0.87);
+}
+</style>
