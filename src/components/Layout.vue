@@ -42,12 +42,6 @@
               </v-btn>
               <span>Source</span>
             </v-tooltip>
-            <v-tooltip right>
-              <v-btn slot="activator" icon large href target="_blank">
-                <v-icon large>mdi-codepen</v-icon>
-              </v-btn>
-              <span>Codepen</span>
-            </v-tooltip>
           </v-flex>
         </v-layout>
       </v-container>

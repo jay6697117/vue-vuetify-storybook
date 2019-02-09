@@ -13,12 +13,14 @@ import {
   VListTile,
   VListTileContent,
   VListTileAction,
+  // VApp,
   VListTileTitle,
   VTextField,
   VSpacer,
-  VToolBar,
+  VToolbar,
   VContent,
   VIcon,
+  VToolbarSideIcon,
   VContainer
 } from 'vuetify/lib';
 
@@ -38,14 +40,16 @@ Vue.component('v-subheader', VSubheader)
 Vue.component('v-divider', VDivider)
 Vue.component('v-list-tile', VListTile)
 Vue.component('v-list-tile-content', VListTileContent)
-Vue.component('v-tool-bar', VToolBar)
-Vue.component('v-contents', VContent)
+Vue.component('v-toolbar', VToolbar)
+Vue.component('v-content', VContent)
 Vue.component('v-container', VContainer)
 Vue.component('v-icon', VIcon)
 Vue.component('v-list-tile-actio', VListTileAction)
 Vue.component('v-list-tile-title', VListTileTitle)
 Vue.component('v-text-field', VTextField)
 Vue.component('v-spacer', VSpacer)
+Vue.component('v-toolbar-side-icon', VToolbarSideIcon)
+// Vue.component('v-app', VApp)
 
 storiesOf('Layout', module)
   .addDecorator(() => ({
