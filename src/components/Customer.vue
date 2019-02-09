@@ -10,13 +10,8 @@
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
-        <td>
-          <span class="subheading grey--text text--darken-3">
-            <strong>{{ props.item.name }}</strong>
-          </span>
-          &nbsp;
-          {{ props.item.city }},&nbsp;{{ props.item.country }}
-        </td>
+        <td>{{ props.item.name }}</td>
+        <td class="text-xs-left">{{ props.item.city }}</td>
         <td class="text-xs-left">{{ props.item.mailbox }}</td>
         <td class="text-xs-right">{{ props.item.packages }}</td>
         <td class="text-xs-right">{{ props.item.spent }}</td>
@@ -35,6 +30,7 @@ export default {
       pagination: {},
       headers: [
         { text: 'Name', value: 'name' },
+        { text: 'City', value: 'city' },
         { text: 'Mailbox', value: 'mailbox' },
         { text: 'Packages', value: 'packages' },
         { text: 'Spent', value: 'spent' }
@@ -101,56 +97,49 @@ export default {
       return [
         {
           name: 'Max Hodges',
-          city: 'Tokyo',
-          country: 'JP',
+          city: 'Tokyo, JP',
           mailbox: 'R001853',
           packages: '7 Packages',
           spent: '$55 spent'
         },
         {
           name: 'Tilda Swinton',
-          city: 'London',
-          country: 'GB',
+          city: 'London, GB',
           mailbox: 'R777777',
           packages: '0 Packages',
           spent: '$0 spent'
         },
         {
           name: 'Marvin Gay',
-          city: 'Kowloon',
-          country: 'HK',
+          city: 'Kowloon, HK',
           mailbox: 'R313481',
           packages: '1 Packages',
           spent: '$33 spent'
         },
         {
           name: 'Micky Mouse',
-          city: 'Orlando',
-          country: 'US',
+          city: 'Orlando, US',
           mailbox: 'R957846',
           packages: '40 Packages',
           spent: '$124 spent'
         },
         {
           name: 'Giles Murray',
-          city: 'London',
-          country: 'GB',
+          city: 'London, GB',
           mailbox: 'R987541',
           packages: '1 Packages',
           spent: '$28 spent'
         },
         {
           name: 'Mika Tajima',
-          city: 'Osaka',
-          country: 'JP',
+          city: 'Osaka, JP',
           mailbox: 'R197212',
           packages: '3 Packages',
           spent: '$69 spent'
         },
         {
           name: 'Pawel Pawlikowski',
-          city: 'Krakow',
-          country: 'PL',
+          city: 'Krakow, PL',
           mailbox: 'R212645',
           packages: '1 Packages',
           spent: '$48 spent'

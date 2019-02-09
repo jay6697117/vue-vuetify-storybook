@@ -54,20 +54,21 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { icon: 'lightbulb_outline', text: 'Notes' },
-      { icon: 'touch_app', text: 'Reminders' },
+      { icon: 'dashboard', text: 'Dashboard' },
+      { icon: 'view_comfy', text: 'Packages' },
+      { icon: 'person', text: 'Customers' },
+      // { icon: 'delete', text: 'Shipments' },
+      { icon: 'check_circle', text: 'Verifications' },
+      { icon: 'move_to_inbox', text: 'Requests' },
+      { icon: 'insert_chart', text: 'Analytics' },
       { divider: true },
-      { heading: 'Labels' },
-      { icon: 'add', text: 'Create new label' },
-      { divider: true },
-      { icon: 'archive', text: 'Archive' },
-      { icon: 'delete', text: 'Trash' },
-      { divider: true },
-      { icon: 'settings', text: 'Settings' },
-      { icon: 'chat_bubble', text: 'Trash' },
-      { icon: 'help', text: 'Help' },
-      { icon: 'phonelink', text: 'App downloads' },
-      { icon: 'keyboard', text: 'Keyboard shortcuts' }
+      { icon: 'person_add', text: 'Staff' }
+
+      // { icon: 'chat_bubble', text: 'Trash' },
+      // { icon: 'help', text: 'Help' },
+      // { divider: true },
+      // { heading: 'Labels' },
+      // { icon: 'add', text: 'Create new label' }
     ]
   }),
   props: {
