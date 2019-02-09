@@ -8,7 +8,7 @@
               <v-subheader v-if="item.heading">{{ item.heading }}</v-subheader>
             </v-flex>
             <v-flex xs6 class="text-xs-right">
-              <v-btn small flat>edit</v-btn>
+              <v-btn small flat>Edit</v-btn>
             </v-flex>
           </v-layout>
           <v-divider v-else-if="item.divider" :key="i" dark class="my-3"></v-divider>
@@ -23,7 +23,7 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="blue-grey" app absolute clipped-left>
+    <v-toolbar color="deep-purple accent-1" app absolute clipped-left>
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
       <span class="title ml-3 mr-5">
         Blackship&nbsp;
@@ -66,20 +66,21 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { icon: 'lightbulb_outline', text: 'Notes' },
-      { icon: 'touch_app', text: 'Reminders' },
+      { icon: 'dashboard', text: 'Dashboard' },
+      { icon: 'view_comfy', text: 'Packages' },
+      { icon: 'person', text: 'Customers' },
+      // { icon: 'delete', text: 'Shipments' },
+      { icon: 'check_circle', text: 'Verifications' },
+      { icon: 'move_to_inbox', text: 'Requests' },
+      { icon: 'insert_chart', text: 'Analytics' },
       { divider: true },
-      { heading: 'Labels' },
-      { icon: 'add', text: 'Create new label' },
-      { divider: true },
-      { icon: 'archive', text: 'Archive' },
-      { icon: 'delete', text: 'Trash' },
-      { divider: true },
-      { icon: 'settings', text: 'Settings' },
-      { icon: 'chat_bubble', text: 'Trash' },
-      { icon: 'help', text: 'Help' },
-      { icon: 'phonelink', text: 'App downloads' },
-      { icon: 'keyboard', text: 'Keyboard shortcuts' }
+      { icon: 'person_add', text: 'Staff' }
+
+      // { icon: 'chat_bubble', text: 'Trash' },
+      // { icon: 'help', text: 'Help' },
+      // { divider: true },
+      // { heading: 'Labels' },
+      // { icon: 'add', text: 'Create new label' }
     ]
   }),
   props: {
