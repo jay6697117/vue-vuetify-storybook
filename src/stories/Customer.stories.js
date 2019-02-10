@@ -8,9 +8,11 @@ import {
   VList,
   VLayout,
   VFlex,
+  VCard,
   VSubheader,
   VDivider,
   VListTile,
+  VCombobox,
   VListTileContent,
   VListTileAction,
   // VApp,
@@ -18,6 +20,8 @@ import {
   VTextField,
   VSpacer,
   VToolbar,
+  VTextarea,
+  VSwitch,
   VContent,
   VIcon,
   VToolbarSideIcon,
@@ -35,9 +39,12 @@ import Customer from '../components/Customer.vue';
 Vue.component('v-navigation-drawer', VNavigationDrawer)
 Vue.component('v-btn', VBtn)
 Vue.component('v-list', VList)
+Vue.component('v-combobox', VCombobox)
 Vue.component('v-layout', VLayout)
 Vue.component('v-flex', VFlex)
+Vue.component('v-textarea', VTextarea)
 Vue.component('v-subheader', VSubheader)
+Vue.component('v-card', VCard)
 Vue.component('v-divider', VDivider)
 Vue.component('v-list-tile', VListTile)
 Vue.component('v-list-tile-content', VListTileContent)
@@ -50,6 +57,7 @@ Vue.component('v-list-tile-title', VListTileTitle)
 Vue.component('v-text-field', VTextField)
 Vue.component('v-data-table', VDataTable)
 Vue.component('v-spacer', VSpacer)
+Vue.component('v-switch', VSwitch)
 Vue.component('v-toolbar-side-icon', VToolbarSideIcon)
 // Vue.component('v-app', VApp)
 

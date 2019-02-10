@@ -1,34 +1,129 @@
 <template>
-  <div class="customer v-content">
-    <div class="page" style="padding: 24px">
-      <div class="tag-H1 headline mb-4">Matthew Perry</div>
+  <div class="customer">
+    <div class="v-container grid-list-md fluid fill-height" style="padding: 24px">
+      <h1 class="headline mb-4">Matthew Perry</h1>
 
-      <v-card class="v-card pa-3 mb-3">
-        <div class="title font-weight-medium">Matthew Perry</div>
-        <div class="py-1 grey--text text--darken-2">Tokyo, JP</div>
-        <div class="grey--text text--darken-2">Customer for 9 months</div>
-        <v-flex xs12 sm6>
-          <v-text-field label="Customer Note" hint="Add a note"></v-text-field>
+      <v-layout justify-center wrap>
+        <v-flex xs8>
+          <v-card class="pa-3 mb-3">
+            <v-card-text>
+              <v-layout row wrap>
+                <v-flex xs10>
+                  <h3 class="title font-weight-medium">Matthew Perry</h3>
+                  <div class="subheading">M185300</div>
+                  <div class="body-2 grey--text text--darken-2">San Diego, US</div>
+                  <div class="body-2 grey--text text--darken-2">Customer for 9 months</div>
+                </v-flex>
+                <v-flex xs2 text-xs-right>
+                  <v-chip color="success" text-color="white">Verified
+                    <v-icon right>check_circle</v-icon>
+                  </v-chip>
+
+                  <v-switch v-model="ex11" label="Disabled" color="error" value="red" hide-details></v-switch>
+                </v-flex>
+              </v-layout>
+            </v-card-text>
+
+            <v-textarea
+              name="customerNote"
+              class="py-3"
+              rows="1"
+              box
+              background-color="grey lighten-5"
+              grey-lighten-1
+              label="Customer note"
+              hint="Add a note"
+              auto-grow
+              value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
+            ></v-textarea>
+          </v-card>
+
+          <v-data-table
+            :headers="headers"
+            :items="desserts"
+            :pagination.sync="pagination"
+            :total-items="totalDesserts"
+            :rows-per-page-items="[10,25,50, 100]"
+            :loading="loading"
+            class="elevation-1"
+          >
+            <template slot="items" slot-scope="props">
+              <td>{{ props.item.package }}</td>
+              <td class="text-xs-left">{{ props.item.receivedAt }}</td>
+              <td class="text-xs-left">
+                {{ props.item.sizeLength }}
+                <span class="caption">x</span>
+                {{ props.item.sizeWidth }}
+                <span class="caption">x</span>
+                {{ props.item.sizeHeight }} cm
+              </td>
+              <td class="text-xs-left">{{ props.item.weightGrams }}</td>
+              <td class="text-xs-left">{{ props.item.location }}</td>
+              <td class="text-xs-left">
+                <v-chip
+                  :color="IsFulfilled(props.item.status) ? '' : 'yellow lighten-3'"
+                >{{props.item.status}}</v-chip>
+              </td>
+              <td class="text-xs-right">{{ props.item.total }}</td>
+            </template>
+          </v-data-table>
         </v-flex>
-      </v-card>
+        <v-flex pl-4 xs4>
+          <v-card class="pa-3 mb-4">
+            <v-card-title primary-title>
+              <h3 class="subheading mb-2 font-weight-bold">Contact</h3>
+              <a
+                href="mailto:matthew.perry@gmai.com"
+                style="text-decoration: none;"
+              >matthew.perry@gmail.com</a>
+              <div>+1-512-555-1853</div>
 
-      <v-data-table
-        :headers="headers"
-        :items="desserts"
-        :pagination.sync="pagination"
-        :total-items="totalDesserts"
-        :rows-per-page-items="[10,25,50, 100]"
-        :loading="loading"
-        class="elevation-1"
-      >
-        <template slot="items" slot-scope="props">
-          <td>{{ props.item.name }}</td>
-          <td class="text-xs-left">{{ props.item.city }}</td>
-          <td class="text-xs-left">{{ props.item.mailbox }}</td>
-          <td class="text-xs-right">{{ props.item.packages }}</td>
-          <td class="text-xs-right">{{ props.item.spent }}</td>
-        </template>
-      </v-data-table>
+              <v-divider class="my-3"/>
+              <div class="address">
+                <div class="mb-3 grey--text text--darken-2 font-weight-bold">PRIMARY ADDRESS</div>
+                <div>MATTHEW PERRY</div>
+                <div>1853 GUN POINT #357</div>
+                <div>SAN DIEGO, CA 91789</div>
+                <div>UNITED STATES</div>
+                <div class="mt-3">
+                  <a
+                    href="#"
+                    style="text-decoration: none;"
+                    class="text-xs-right"
+                  >View all addresses</a>
+                </div>
+              </div>
+              <v-divider class="my-3"/>
+              <!-- get custom icons in here for twitter and facebook -->
+              <v-icon>face</v-icon>
+              <v-icon>favorite_border</v-icon>
+              <div>(facebook, twitter icons missing)</div>
+            </v-card-title>
+          </v-card>
+
+          <v-card class="pa-3 mb-4">
+            <v-card-title primary-title>
+              <h3 class="subheading mb-2 font-weight-bold">Tags</h3>
+            </v-card-title>
+            <v-combobox
+              v-model="chips"
+              :items="items"
+              label="Your favorite hobbies"
+              chips
+              clearable
+              solo
+              multiple
+            >
+              <template slot="selection" slot-scope="data">
+                <v-chip :selected="data.selected" close @input="remove(data.item)">
+                  {{ data.item }}
+                  &nbsp;
+                </v-chip>
+              </template>
+            </v-combobox>
+          </v-card>
+        </v-flex>
+      </v-layout>
     </div>
   </div>
 </template>
@@ -39,14 +134,23 @@ export default {
     return {
       totalDesserts: 0,
       desserts: [],
+      chips: ['influencer'],
+      items: ['bad review', 'PITA', 'whale'],
       loading: true,
-      pagination: {},
+      pagination: {
+        sortBy: 'Date'
+      },
       headers: [
-        { text: 'Name', value: 'name' },
-        { text: 'City', value: 'city' },
-        { text: 'Mailbox', value: 'mailbox' },
-        { text: 'Packages', value: 'packages' },
-        { text: 'Spent', value: 'spent' }
+        { text: 'Package', value: 'package' },
+        { text: 'Date', value: 'receivedAt' },
+
+        { text: 'Size', value: 'size' },
+
+        { text: 'Weight', value: 'weightGrams' },
+        { text: 'Location', value: 'location' },
+
+        { text: 'Status', value: 'status' },
+        { text: 'Total', value: 'total' }
       ]
     }
   },
@@ -68,6 +172,13 @@ export default {
     })
   },
   methods: {
+    IsFulfilled: function (fulfillmentStatus) {
+      return fulfillmentStatus === 'Fulfilled';
+    },
+    remove (item) {
+      this.chips.splice(this.chips.indexOf(item), 1)
+      this.chips = [...this.chips]
+    },
     getDataFromApi () {
       this.loading = true
       return new Promise((resolve, reject) => {
@@ -109,53 +220,37 @@ export default {
     getDesserts () {
       return [
         {
-          name: 'Max Hodges',
-          city: 'Tokyo, JP',
-          mailbox: 'R001853',
-          packages: '7 Packages',
-          spent: '$55 spent'
+          package: 'B648751',
+          receivedAt: 'Sept 3, 11:20',
+          sizeLength: 20,
+          sizeWidth: 20,
+          sizeHeight: 25,
+          weightGrams: '291 grams',
+          status: 'Mailbox',
+          total: '',
+          location: 'BC3A'
         },
         {
-          name: 'Tilda Swinton',
-          city: 'London, GB',
-          mailbox: 'R777777',
-          packages: '0 Packages',
-          spent: '$0 spent'
+          package: 'B648763',
+          receivedAt: 'Sept 3, 11:43',
+          sizeLength: 20,
+          sizeWidth: 30,
+          sizeHeight: 35,
+          weightGrams: '430 grams',
+          status: 'Mailbox',
+          total: '',
+          location: 'BD2B'
         },
         {
-          name: 'Marvin Gay',
-          city: 'Kowloon, HK',
-          mailbox: 'R313481',
-          packages: '1 Packages',
-          spent: '$33 spent'
-        },
-        {
-          name: 'Micky Mouse',
-          city: 'Orlando, US',
-          mailbox: 'R957846',
-          packages: '40 Packages',
-          spent: '$124 spent'
-        },
-        {
-          name: 'Giles Murray',
-          city: 'London, GB',
-          mailbox: 'R987541',
-          packages: '1 Packages',
-          spent: '$28 spent'
-        },
-        {
-          name: 'Mika Tajima',
-          city: 'Osaka, JP',
-          mailbox: 'R197212',
-          packages: '3 Packages',
-          spent: '$69 spent'
-        },
-        {
-          name: 'Pawel Pawlikowski',
-          city: 'Krakow, PL',
-          mailbox: 'R212645',
-          packages: '1 Packages',
-          spent: '$48 spent'
+          package: 'B558467',
+          receivedAt: 'Dec 22, 2018',
+          sizeLength: 20,
+          sizeWidth: 20,
+          sizeHeight: 35,
+          weightGrams: '1,430 grams',
+          status: 'Fulfilled',
+          total: '$123.45',
+          location: ''
         }
       ]
     }
@@ -165,7 +260,8 @@ export default {
 
 <style lang="stylus">
 .v-content {
-  background-color: #fafafa;
-  color: rgba(0, 0, 0, 0.87);
+  // background-color: #fafafa;
+  // color: rgba(0, 0, 0, 0.87);
+  //
 }
 </style>
