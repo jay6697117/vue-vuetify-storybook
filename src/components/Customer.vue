@@ -7,29 +7,37 @@
         <v-flex xs8>
           <v-alert v-show="disabled" :value="true" type="error">Account disabled</v-alert>
           <v-card class="pa-3 mb-3">
-            <v-card-text>
-              <v-layout row wrap>
-                <v-flex xs10>
-                  <h3 class="title font-weight-medium">Matthew Perry</h3>
-                  <div class="subheading">M185300</div>
-                  <div class="body-2 grey--text text--darken-2">San Diego, US</div>
-                  <div class="body-2 grey--text text--darken-2">Customer for 9 months</div>
-                </v-flex>
-                <v-flex xs2 text-xs-right>
-                  <v-chip color="success" text-color="white">Verified
+            <v-layout row justify-space-between>
+              <v-flex>
+                <v-card-title primary-title>
+                  <div>
+                    <h2 class="title font-weight-medium">Matthew Perry</h2>
+                    <div class="subheading">M185300</div>
+                    <div class="body-2 grey--text text--darken-2">San Diego, US</div>
+                    <div class="body-2 grey--text text--darken-2">Customer for 9 months</div>
+                  </div>
+                </v-card-title>
+              </v-flex>
+              <div></div>
+
+              <v-flex text-xs-right>
+                <div class="mr-2 pr-1">
+                  <v-chip class color="success" text-color="white">Verified
                     <v-icon right>check_circle</v-icon>
                   </v-chip>
-
+                </div>
+                <div>
                   <v-switch
+                    class="d-inline-block"
                     v-model="disabled"
                     label="Disabled"
                     color="error"
                     value="banned"
                     hide-details
                   ></v-switch>
-                </v-flex>
-              </v-layout>
-            </v-card-text>
+                </div>
+              </v-flex>
+            </v-layout>
 
             <v-textarea
               name="customerNote"
@@ -43,6 +51,26 @@
               auto-grow
               value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
             ></v-textarea>
+
+            <!-- customer stats block -->
+            <v-card-actions>
+              <v-layout row wrap class="subheading text-xs-center">
+                <v-flex xs4>
+                  <div class="grey--text text--darken-1">Last package</div>
+                  <div class="py-1 font-weight-bold">3 days ago</div>
+                </v-flex>
+                <v-flex xs4>
+                  <div class="grey--text text--darken-1">Packages received</div>
+                  <div class="py-1 font-weight-bold">3</div>
+                </v-flex>
+
+                <v-flex xs4>
+                  <div class="grey--text text--darken-1">Lifetime spent</div>
+                  <div class="py-1 font-weight-bold">$143.33</div>
+                  <div class="grey--text text--darken-1">2 shipments</div>
+                </v-flex>
+              </v-layout>
+            </v-card-actions>
           </v-card>
 
           <v-data-table
@@ -79,13 +107,14 @@
           <!-- CONTACT PANEL -->
           <v-card class="pa-3 mb-4">
             <v-card-title primary-title>
-              <h3 class="subheading mb-2 font-weight-bold">Contact</h3>
+              <div class="subheading mb-2 font-weight-bold">Contact</div>
               <a
                 href="mailto:matthew.perry@gmai.com"
                 style="text-decoration: none;"
               >matthew.perry@gmail.com</a>
               <div>+1-512-555-1853</div>
-
+            </v-card-title>
+            <v-card-text>
               <v-divider class="my-3"/>
               <div class="address">
                 <div class="mb-3 grey--text text--darken-2 font-weight-bold">PRIMARY ADDRESS</div>
@@ -106,7 +135,7 @@
               <v-icon>face</v-icon>
               <v-icon>favorite_border</v-icon>
               <div>(facebook, twitter icons missing)</div>
-            </v-card-title>
+            </v-card-text>
           </v-card>
 
           <!-- TAGS PANEL -->
@@ -299,11 +328,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus">
-.v-content {
-  // background-color: #fafafa;
-  // color: rgba(0, 0, 0, 0.87);
-  //
-}
-</style>
