@@ -5,6 +5,7 @@
 
       <v-layout justify-center wrap>
         <v-flex xs8>
+          <v-alert v-show="disabled" :value="true" type="error">Account disabled</v-alert>
           <v-card class="pa-3 mb-3">
             <v-card-text>
               <v-layout row wrap>
@@ -19,7 +20,13 @@
                     <v-icon right>check_circle</v-icon>
                   </v-chip>
 
-                  <v-switch v-model="ex11" label="Disabled" color="error" value="red" hide-details></v-switch>
+                  <v-switch
+                    v-model="disabled"
+                    label="Disabled"
+                    color="error"
+                    value="banned"
+                    hide-details
+                  ></v-switch>
                 </v-flex>
               </v-layout>
             </v-card-text>
@@ -69,6 +76,7 @@
           </v-data-table>
         </v-flex>
         <v-flex pl-4 xs4>
+          <!-- CONTACT PANEL -->
           <v-card class="pa-3 mb-4">
             <v-card-title primary-title>
               <h3 class="subheading mb-2 font-weight-bold">Contact</h3>
@@ -101,19 +109,12 @@
             </v-card-title>
           </v-card>
 
-          <v-card class="pa-3 mb-4">
+          <!-- TAGS PANEL -->
+          <v-card class="pa-3 mb-4" color="grey lighten-4">
             <v-card-title primary-title>
-              <h3 class="subheading mb-2 font-weight-bold">Tags</h3>
+              <h3 class="subheading mb-3 font-weight-bold">Tags</h3>
             </v-card-title>
-            <v-combobox
-              v-model="chips"
-              :items="items"
-              label="Your favorite hobbies"
-              chips
-              clearable
-              solo
-              multiple
-            >
+            <v-combobox v-model="chips" :items="items" label="Add tags" chips solo multiple>
               <template slot="selection" slot-scope="data">
                 <v-chip :selected="data.selected" close @input="remove(data.item)">
                   {{ data.item }}
@@ -121,6 +122,26 @@
                 </v-chip>
               </template>
             </v-combobox>
+          </v-card>
+
+          <!-- APPLICATIONS PANEL -->
+          <v-card class="mb-4">
+            <v-card-title primary-title>
+              <h3 class="pt-3 pl-3 subheading font-weight-bold">Applications</h3>
+            </v-card-title>
+            <v-list>
+              <template v-for="(item, index) in applications">
+                <v-list-tile class="py-1" :key="item.title" ripple @click>
+                  <v-list-tile-content>
+                    <v-list-tile-title>{{ item.subtitle }}</v-list-tile-title>
+                  </v-list-tile-content>
+                  <v-list-tile-action>
+                    <v-chip :color="(item.chipColor)" text-color="white">{{item.chipText}}</v-chip>
+                  </v-list-tile-action>
+                </v-list-tile>
+                <v-divider v-if="index + 1 < applications.length" :key="index"></v-divider>
+              </template>
+            </v-list>
           </v-card>
         </v-flex>
       </v-layout>
@@ -132,6 +153,27 @@
 export default {
   data () {
     return {
+      disabled: false,
+      applications: [
+        {
+          chipText: 'Approved',
+          chipColor: 'success',
+          title: 'Photos',
+          subtitle: 'Jan 3, 13:53'
+        },
+        {
+          chipText: 'Soft rejected',
+          chipColor: 'grey lighten-1',
+          title: 'Photos',
+          subtitle: 'Dec 25, 2018'
+        },
+        {
+          chipText: 'Hard rejected',
+          chipColor: 'grey',
+          title: 'Photos',
+          subtitle: 'Dec 21, 2018'
+        }
+      ],
       totalDesserts: 0,
       desserts: [],
       chips: ['influencer'],

@@ -7,6 +7,7 @@ import {
   VBtn,
   VList,
   VLayout,
+  VAlert,
   VFlex,
   VSubheader,
   VDivider,
@@ -35,6 +36,7 @@ import CustomerList from '../components/CustomerList.vue';
 Vue.component('v-navigation-drawer', VNavigationDrawer)
 Vue.component('v-btn', VBtn)
 Vue.component('v-list', VList)
+Vue.component('v-alert', VAlert)
 Vue.component('v-layout', VLayout)
 Vue.component('v-flex', VFlex)
 Vue.component('v-subheader', VSubheader)
@@ -45,7 +47,7 @@ Vue.component('v-toolbar', VToolbar)
 Vue.component('v-content', VContent)
 Vue.component('v-container', VContainer)
 Vue.component('v-icon', VIcon)
-Vue.component('v-list-tile-actio', VListTileAction)
+Vue.component('v-list-tile-action', VListTileAction)
 Vue.component('v-list-tile-title', VListTileTitle)
 Vue.component('v-text-field', VTextField)
 Vue.component('v-data-table', VDataTable)
