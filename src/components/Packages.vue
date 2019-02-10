@@ -1,7 +1,7 @@
 <template>
   <div class="package-list v-content">
-    <div class="page" style="padding: 24px">
-      <div class="tag-H1 headline mb-4">Packages</div>
+    <div class="v-container fluid fill-height" style="padding: 24px">
+      <h1 class="headline mb-4">Packages</h1>
       <div class="v-card v-card--flat">
         <v-data-table
           :headers="headers"
@@ -13,13 +13,21 @@
           class="elevation-1"
         >
           <template slot="items" slot-scope="props">
-            <td>{{ props.item.packageId }}</td>
-            <td class="text-xs-left">{{ props.item.date }}</td>
-            <td class="text-xs-left">{{ props.item.customer }}</td>
+            <td>{{ props.item.package }}</td>
+            <td class="text-xs-left">{{ props.item.receivedAt }}</td>
+            <td class="text-xs-left">
+              {{ props.item.sizeLength }}
+              <span class="caption">x</span>
+              {{ props.item.sizeWidth }}
+              <span class="caption">x</span>
+              {{ props.item.sizeHeight }} cm
+            </td>
+            <td class="text-xs-left">{{ props.item.weightGrams }}</td>
+            <td class="text-xs-left">{{ props.item.location }}</td>
             <td class="text-xs-left">
               <v-chip
-                :color="IsFulfilled(props.item.fulfillmentStatus) ? 'yellow lighten-3' : ''"
-              >{{props.item.fulfillmentStatus}}</v-chip>
+                :color="IsFulfilled(props.item.status) ? '' : 'yellow lighten-3'"
+              >{{props.item.status}}</v-chip>
             </td>
             <td class="text-xs-right">{{ props.item.total }}</td>
           </template>
@@ -36,12 +44,19 @@ export default {
       totalDesserts: 0,
       desserts: [],
       loading: true,
-      pagination: {},
+      pagination: {
+        sortBy: 'Date'
+      },
       headers: [
-        { text: 'Package', value: 'packgeId' },
-        { text: 'Date', value: 'date' },
-        { text: 'Customer', value: 'customer' },
-        { text: 'Fulfillment status', value: 'fulfillmentStatus' },
+        { text: 'Package', value: 'package' },
+        { text: 'Date', value: 'receivedAt' },
+
+        { text: 'Size', value: 'size' },
+
+        { text: 'Weight', value: 'weightGrams' },
+        { text: 'Location', value: 'location' },
+
+        { text: 'Status', value: 'status' },
         { text: 'Total', value: 'total' }
       ]
     }
@@ -108,18 +123,37 @@ export default {
     getDesserts () {
       return [
         {
-          packageId: 'B001853',
-          date: 'Sep 3, 7:25 am',
-          customer: 'Max Hodges',
-          fulfillmentStatus: 'Fulfilled',
-          total: '$63.50'
+          package: 'B648751',
+          receivedAt: 'Sept 3, 11:20',
+          sizeLength: 20,
+          sizeWidth: 20,
+          sizeHeight: 25,
+          weightGrams: '291 grams',
+          status: 'Mailbox',
+          total: '',
+          location: 'BC3A'
         },
         {
-          packageId: 'B198781',
-          date: 'Sep 1, 10:10 am',
-          customer: 'Charlie Brown',
-          fulfillmentStatus: 'Unfulfilled',
-          total: '$33.21'
+          package: 'B648763',
+          receivedAt: 'Sept 3, 11:43',
+          sizeLength: 20,
+          sizeWidth: 30,
+          sizeHeight: 35,
+          weightGrams: '430 grams',
+          status: 'Mailbox',
+          total: '',
+          location: 'BD2B'
+        },
+        {
+          package: 'B558467',
+          receivedAt: 'Dec 22, 2018',
+          sizeLength: 20,
+          sizeWidth: 20,
+          sizeHeight: 35,
+          weightGrams: '1,430 grams',
+          status: 'Fulfilled',
+          total: '$123.45',
+          location: ''
         }
       ]
     }

@@ -6,6 +6,8 @@
       <v-layout justify-center wrap>
         <v-flex xs8>
           <v-alert v-show="disabled" :value="true" type="error">Account disabled</v-alert>
+          <v-alert :value="true" type="warning">Application awaiting review</v-alert>
+
           <v-card class="pa-3 mb-3">
             <v-layout row justify-space-between>
               <v-flex>
@@ -26,16 +28,6 @@
                     <v-icon right>check_circle</v-icon>
                   </v-chip>
                 </div>
-                <div>
-                  <v-switch
-                    class="d-inline-block"
-                    v-model="disabled"
-                    label="Disabled"
-                    color="error"
-                    value="banned"
-                    hide-details
-                  ></v-switch>
-                </div>
               </v-flex>
             </v-layout>
 
@@ -49,7 +41,7 @@
               label="Customer note"
               hint="Add a note"
               auto-grow
-              value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
+              value="Night City was like a deranged experiment in social Darwinism, designed by a bored researcher who kept one thumb permanently on the fast-forward button."
             ></v-textarea>
 
             <!-- customer stats block -->
@@ -160,9 +152,10 @@
             </v-card-title>
             <v-list>
               <template v-for="(item, index) in applications">
-                <v-list-tile class="py-1" :key="item.title" ripple @click>
+                <v-list-tile class="py-1" :key="item.createdAt" ripple @click>
                   <v-list-tile-content>
-                    <v-list-tile-title>{{ item.subtitle }}</v-list-tile-title>
+                    <v-list-tile-title>{{ item.createdAt }}</v-list-tile-title>
+                    <v-list-tile-sub-title>Reviewed: {{ item.reviewedAt }}</v-list-tile-sub-title>
                   </v-list-tile-content>
                   <v-list-tile-action>
                     <v-chip :color="(item.chipColor)" text-color="white">{{item.chipText}}</v-chip>
@@ -171,6 +164,17 @@
                 <v-divider v-if="index + 1 < applications.length" :key="index"></v-divider>
               </template>
             </v-list>
+            <v-divider/>
+            <div class="pa-3">
+              <div class="mb-3 grey--text text--darken-2 font-weight-bold">ACCOUNT</div>
+              <v-switch
+                v-model="disabled"
+                label="Disabled"
+                color="error"
+                value="banned"
+                hide-details
+              ></v-switch>
+            </div>
           </v-card>
         </v-flex>
       </v-layout>
@@ -185,22 +189,28 @@ export default {
       disabled: false,
       applications: [
         {
+          chipText: 'New',
+          chipColor: 'warning',
+          createdAt: 'Feb 6, 13:53',
+          reviewedAt: 'Feb 7, 13:53'
+        },
+        {
           chipText: 'Approved',
           chipColor: 'success',
-          title: 'Photos',
-          subtitle: 'Jan 3, 13:53'
+          createdAt: 'Jan 3, 13:53',
+          reviewedAt: 'Jan 12, 13:53'
         },
         {
           chipText: 'Soft rejected',
           chipColor: 'grey lighten-1',
-          title: 'Photos',
-          subtitle: 'Dec 25, 2018'
+          createdAt: 'Dec 25, 2018',
+          reviewedAt: 'Dec 25, 2018'
         },
         {
           chipText: 'Hard rejected',
           chipColor: 'grey',
-          title: 'Photos',
-          subtitle: 'Dec 21, 2018'
+          createdAt: 'Dec 20, 2018',
+          reviewedAt: 'Dec 21, 2018'
         }
       ],
       totalDesserts: 0,

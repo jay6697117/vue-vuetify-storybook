@@ -1,7 +1,8 @@
 <template>
   <div class="customer-list v-content">
-    <div class="page" style="padding: 24px">
-      <div class="tag-H1 headline mb-4">Customers</div>
+    <div class="v-container fluid fill-height" style="padding: 24px">
+      <h1 class="headline mb-4">Customers</h1>
+
       <div class="v-card v-card--flat">
         <v-data-table
           :headers="headers"
@@ -22,6 +23,9 @@
             </td>
             <td class="text-xs-left">{{ props.item.mailbox }}</td>
             <td class="text-xs-right">{{ props.item.packages }}</td>
+            <td class="text-xs-right">{{ props.item.lastActiveAt }}</td>
+            <td class="text-xs-right">{{ props.item.createdAt }}</td>
+
             <td class="text-xs-right">{{ props.item.spent }}</td>
           </template>
         </v-data-table>
@@ -42,6 +46,9 @@ export default {
         { text: 'Name', value: 'name' },
         { text: 'Mailbox', value: 'mailbox' },
         { text: 'Packages', value: 'packages' },
+        { text: 'Last seen', value: 'lastActiveAt' },
+        { text: 'First seen', value: 'createdAt' },
+        // { text: 'Application pending', value: 'applicationPending' },
         { text: 'Spent', value: 'spent' }
       ]
     }
@@ -110,15 +117,19 @@ export default {
           country: 'JP',
           mailbox: 'R001853',
           packages: '7 Packages',
-          spent: '$55 spent'
+          createdAt: '4 months ago',
+          lastActiveAt: '2 hours ago',
+          spent: '$55.01 spent'
         },
         {
           name: 'Tilda Swinton',
           city: 'London',
           country: 'GB',
-          mailbox: 'R777777',
+          mailbox: '',
           packages: '0 Packages',
-          spent: '$0 spent'
+          createdAt: '3 days ago',
+          lastActiveAt: '32 minutes ago',
+          spent: '$0.00 spent'
         },
         {
           name: 'Marvin Gay',
@@ -126,7 +137,9 @@ export default {
           country: 'HK',
           mailbox: 'R313481',
           packages: '1 Packages',
-          spent: '$33 spent'
+          createdAt: '7 days ago',
+          lastActiveAt: 'a day ago',
+          spent: '$33.87 spent'
         },
         {
           name: 'Micky Mouse',
@@ -134,7 +147,9 @@ export default {
           country: 'US',
           mailbox: 'R957846',
           packages: '40 Packages',
-          spent: '$124 spent'
+          createdAt: '2 years ago',
+          lastActiveAt: '2 weeks ago',
+          spent: '$124.12 spent'
         },
         {
           name: 'Giles Murray',
@@ -142,15 +157,19 @@ export default {
           country: 'GB',
           mailbox: 'R987541',
           packages: '1 Packages',
-          spent: '$28 spent'
+          createdAt: '2 weeks ago',
+          lastActiveAt: '1 hour ago',
+          spent: '$28.42 spent'
         },
         {
           name: 'Mika Tajima',
           city: 'Osaka',
           country: 'JP',
-          mailbox: 'R197212',
-          packages: '3 Packages',
-          spent: '$69 spent'
+          mailbox: '',
+          packages: '0 Packages',
+          createdAt: 'a day ago',
+          lastActiveAt: '1 hour ago',
+          spent: '$0.00 spent'
         },
         {
           name: 'Pawel Pawlikowski',
@@ -158,7 +177,9 @@ export default {
           country: 'PL',
           mailbox: 'R212645',
           packages: '1 Packages',
-          spent: '$48 spent'
+          createdAt: '12 days ago',
+          lastActiveAt: '12 days ago',
+          spent: '$48.00 spent'
         }
       ]
     }

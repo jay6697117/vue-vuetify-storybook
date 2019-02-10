@@ -7,7 +7,6 @@ import {
   VBtn,
   VList,
   VLayout,
-  VAlert,
   VFlex,
   VSubheader,
   VDivider,
@@ -23,7 +22,8 @@ import {
   VIcon,
   VToolbarSideIcon,
   VContainer,
-  VDataTable
+  VDataTable,
+  VChip
 } from 'vuetify/lib';
 
 import 'vuetify/src/stylus/app.styl';
@@ -31,12 +31,11 @@ import 'vuetify/src/stylus/app.styl';
 import i18n from '../i18n';
 import store from '../store';
 
-import CustomerList from '../components/CustomerList.vue';
+import Packages from '../components/Packages.vue';
 
 Vue.component('v-navigation-drawer', VNavigationDrawer)
 Vue.component('v-btn', VBtn)
 Vue.component('v-list', VList)
-Vue.component('v-alert', VAlert)
 Vue.component('v-layout', VLayout)
 Vue.component('v-flex', VFlex)
 Vue.component('v-subheader', VSubheader)
@@ -47,22 +46,24 @@ Vue.component('v-toolbar', VToolbar)
 Vue.component('v-content', VContent)
 Vue.component('v-container', VContainer)
 Vue.component('v-icon', VIcon)
-Vue.component('v-list-tile-action', VListTileAction)
+Vue.component('v-list-tile-actio', VListTileAction)
 Vue.component('v-list-tile-title', VListTileTitle)
 Vue.component('v-text-field', VTextField)
 Vue.component('v-data-table', VDataTable)
 Vue.component('v-spacer', VSpacer)
 Vue.component('v-toolbar-side-icon', VToolbarSideIcon)
+Vue.component('v-chip', VChip)
+
 // Vue.component('v-app', VApp)
 
-storiesOf('CustomerList', module)
+storiesOf('Packages', module)
   .addDecorator(() => ({
     template: '<v-app id="blackship-admin"><story/></v-app>'
   }))
   .add('default', () => ({
-    components: { CustomerList },
+    components: { Packages },
     template: `
-      <customer-list/>`,
+      <packages/>`,
     i18n,
     store
   }))
