@@ -41,7 +41,7 @@
               label="Customer note"
               hint="Add a note"
               auto-grow
-              value="Night City was like a deranged experiment in social Darwinism, designed by a bored researcher who kept one thumb permanently on the fast-forward button."
+              value="Her skin glistening in the neon light coming from the paved court through the slits in the blind, her soot-black lashes matted, her grave gray eyes more vacant than ever."
             ></v-textarea>
 
             <!-- customer stats block -->

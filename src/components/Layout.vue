@@ -58,7 +58,7 @@ export default {
       { icon: 'view_comfy', text: 'Packages' },
       { icon: 'person', text: 'Customers' },
       // { icon: 'delete', text: 'Shipments' },
-      { icon: 'check_circle', text: 'Verifications' },
+      { icon: 'check_circle', text: 'Applications' },
       { icon: 'move_to_inbox', text: 'Requests' },
       { icon: 'insert_chart', text: 'Analytics' },
       { divider: true },
