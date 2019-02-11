@@ -1,7 +1,7 @@
 <template>
   <div class="package-list v-content">
     <div class="v-container fluid fill-height" style="padding: 24px">
-      <h1 class="headline mb-4">Applications</h1>
+      <h1 class="headline mb-4">New Applications</h1>
       <div class="v-card v-card--flat">
         <v-data-table
           :headers="headers"
@@ -13,23 +13,9 @@
           class="elevation-1"
         >
           <template slot="items" slot-scope="props">
-            <td>{{ props.item.package }}</td>
-            <td class="text-xs-left">{{ props.item.receivedAt }}</td>
-            <td class="text-xs-left">
-              {{ props.item.sizeLength }}
-              <span class="caption">x</span>
-              {{ props.item.sizeWidth }}
-              <span class="caption">x</span>
-              {{ props.item.sizeHeight }} cm
-            </td>
-            <td class="text-xs-left">{{ props.item.weightGrams }}</td>
-            <td class="text-xs-left">{{ props.item.location }}</td>
-            <td class="text-xs-left">
-              <v-chip
-                :color="IsFulfilled(props.item.status) ? '' : 'yellow lighten-3'"
-              >{{props.item.status}}</v-chip>
-            </td>
-            <td class="text-xs-right">{{ props.item.total }}</td>
+            <td class="text-xs-left">{{ props.item.customerName }}</td>
+            <td class="text-xs-left">{{ props.item.createdAt }}</td>
+            <td class="text-xs-left">{{ props.item.note }}</td>
           </template>
         </v-data-table>
       </div>
@@ -48,16 +34,9 @@ export default {
         sortBy: 'Date'
       },
       headers: [
-        { text: 'Package', value: 'package' },
-        { text: 'Date', value: 'receivedAt' },
-
-        { text: 'Size', value: 'size' },
-
-        { text: 'Weight', value: 'weightGrams' },
-        { text: 'Location', value: 'location' },
-
-        { text: 'Status', value: 'status' },
-        { text: 'Total', value: 'total' }
+        { text: 'Customer', value: 'customerName' },
+        { text: 'Date', value: 'createdAt' },
+        { text: 'Note', value: 'note' }
       ]
     }
   },
@@ -123,37 +102,25 @@ export default {
     getDesserts () {
       return [
         {
-          package: 'B648751',
-          receivedAt: 'Sept 3, 11:20',
-          sizeLength: 20,
-          sizeWidth: 20,
-          sizeHeight: 25,
-          weightGrams: '291 grams',
-          status: 'Mailbox',
-          total: '',
-          location: 'BC3A'
+          customerName: 'Summer Phoenix',
+          createdAt: '1 week ago',
+          note: 'she looks like fun'
         },
         {
-          package: 'B648763',
-          receivedAt: 'Sept 3, 11:43',
-          sizeLength: 20,
-          sizeWidth: 30,
-          sizeHeight: 35,
-          weightGrams: '430 grams',
-          status: 'Mailbox',
-          total: '',
-          location: 'BD2B'
+          customerName: 'Rain Phoenix',
+          createdAt: 'a day ago',
+          note:
+            'her skin glistening in the neon light coming from the paved court through the slits in the blind, her soot-black lashes matted, her grave gray eyes more vacant than ever'
         },
         {
-          package: 'B558467',
-          receivedAt: 'Dec 22, 2018',
-          sizeLength: 20,
-          sizeWidth: 20,
-          sizeHeight: 35,
-          weightGrams: '1,430 grams',
-          status: 'Fulfilled',
-          total: '$123.45',
-          location: ''
+          customerName: 'Homer Simpson',
+          createdAt: '2 hours ago',
+          note: 'lord of darkness'
+        },
+        {
+          customerName: 'Libery Phoenix',
+          createdAt: '43 minutes ago',
+          note: 'she looks like an 80s pop star'
         }
       ]
     }

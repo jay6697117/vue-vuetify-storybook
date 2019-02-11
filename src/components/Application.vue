@@ -7,7 +7,7 @@
         <v-flex xs8>
           <v-card class="pa-3 mb-3">
             <v-card-title primary-title>
-              <div class="subheading mb-2 font-weight-bold">Identity</div>
+              <div class="title mb-3 font-weight-bold">Identity</div>
             </v-card-title>
             <v-layout row wrap>
               <v-flex xs12 sm6 px-3>
@@ -41,16 +41,40 @@
           </v-card>
           <v-card class="pa-3 mb-3">
             <v-card-title primary-title>
-              <div class="subheading mb-2 font-weight-bold">Address</div>
+              <div class="title mb-3 font-weight-bold">Address</div>
             </v-card-title>
-            <v-card-text>
-              <div class="address">
-                <div>MATTHEW PERRY</div>
-                <div>1853 GUN POINT #357</div>
-                <div>SAN DIEGO, CA 91789</div>
-                <div>UNITED STATES</div>
-              </div>
-            </v-card-text>
+            <v-layout row wrap>
+              <v-flex xs12 sm6 px-3>
+                <v-text-field value="1853 GUN POINT" label="Address 1" readonly></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6 px-3>
+                <v-text-field value="#357" label="Address 2" readonly></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6 px-3>
+                <v-text-field value="SAN DIEGO" label="City" readonly></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6 px-3>
+                <v-text-field value="CA" label="Region" readonly></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6 px-3>
+                <v-text-field value="United States" label="Country" readonly></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6 px-3>
+                <v-text-field value="91789" label="Postal code" readonly></v-text-field>
+              </v-flex>
+            </v-layout>
+
+            <v-card-text></v-card-text>
+            <v-flex xs12 md7 pa-3>
+              <v-card color="yellow lighten-4" class="pa-3">
+                <div class="title">
+                  <div class="pb-1">MATTHEW PERRY</div>
+                  <div class="pb-1">1853 GUN POINT #357</div>
+                  <div class="pb-1">SAN DIEGO, CA 91789</div>
+                  <div class="pb-1">UNITED STATES</div>
+                </div>
+              </v-card>
+            </v-flex>
             <div class="py-3">
               <v-img src="https://picsum.photos/300/200?image=56" aspect-ratio="1.7"></v-img>
             </div>
@@ -72,9 +96,11 @@
           <v-alert v-show="true" type="warning" :value="true">New</v-alert>
           <v-card class="pa-3 mb-4">
             <v-card-title primary-title>
-              <div class="subheading mb-2 font-weight-bold">Selected Application</div>
+              <div class="subheading mb-2 font-weight-bold">Information</div>
               <div>Feb 6, 13:53</div>
               <v-divider class="my-3"/>
+              <div class="mb-3 grey--text text--darken-2 font-weight-bold">SOCIAL PROFILES</div>
+
               <!-- get custom icons in here for twitter and facebook -->
               <v-icon>face</v-icon>
               <v-icon>favorite_border</v-icon>
@@ -95,7 +121,7 @@
           <!-- APPLICATIONS PANEL -->
           <v-card class="mb-4">
             <v-card-title primary-title>
-              <h3 class="pt-3 pl-3 subheading font-weight-bold">User's Applications</h3>
+              <h3 class="pt-3 pl-3 subheading font-weight-bold">All Applications</h3>
             </v-card-title>
             <v-list>
               <template v-for="(item, index) in applications">
