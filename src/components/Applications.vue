@@ -13,9 +13,14 @@
           class="elevation-1"
         >
           <template slot="items" slot-scope="props">
-            <td class="text-xs-left">{{ props.item.customerName }}</td>
+            <td>
+              <span class="subheading grey--text text--darken-3">
+                <strong>{{ props.item.name }}</strong>
+              </span>
+              &nbsp;
+              {{ props.item.city }},&nbsp;{{ props.item.country }}
+            </td>
             <td class="text-xs-left">{{ props.item.createdAt }}</td>
-            <td class="text-xs-left">{{ props.item.note }}</td>
           </template>
         </v-data-table>
       </div>
@@ -35,8 +40,8 @@ export default {
       },
       headers: [
         { text: 'Customer', value: 'customerName' },
-        { text: 'Date', value: 'createdAt' },
-        { text: 'Note', value: 'note' }
+        { text: 'Date', value: 'createdAt' }
+        // { text: 'Note', value: 'note' }
       ]
     }
   },
@@ -102,25 +107,28 @@ export default {
     getDesserts () {
       return [
         {
-          customerName: 'Summer Phoenix',
+          name: 'Summer Phoenix',
           createdAt: '1 week ago',
-          note: 'she looks like fun'
+          city: 'London',
+          country: 'GB'
         },
         {
-          customerName: 'Rain Phoenix',
+          name: 'Rain Phoenix',
           createdAt: 'a day ago',
-          note:
-            'her skin glistening in the neon light coming from the paved court through the slits in the blind, her soot-black lashes matted, her grave gray eyes more vacant than ever'
+          city: 'Austin',
+          country: 'US'
         },
         {
-          customerName: 'Homer Simpson',
+          name: 'Homer Simpson',
           createdAt: '2 hours ago',
-          note: 'lord of darkness'
+          city: 'Kowloon',
+          country: 'HK'
         },
         {
-          customerName: 'Libery Phoenix',
+          name: 'Libery Phoenix',
           createdAt: '43 minutes ago',
-          note: 'she looks like an 80s pop star'
+          city: 'Doha',
+          country: 'QA'
         }
       ]
     }

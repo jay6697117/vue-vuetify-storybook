@@ -5,7 +5,7 @@
 
       <v-layout justify-center wrap>
         <v-flex xs8>
-          <v-card class="pa-3 mb-3">
+          <v-card class="pa-3 mb-4">
             <v-card-title primary-title>
               <div class="title mb-3 font-weight-bold">Identity</div>
             </v-card-title>

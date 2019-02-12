@@ -13,7 +13,9 @@
               <v-flex>
                 <v-card-title primary-title>
                   <div>
-                    <h2 class="title font-weight-medium">Matthew Perry</h2>
+                    <h2 class="title font-weight-medium">Matthew Perry
+                      <v-chip class color="deep-purple" small text-color="white">Standard</v-chip>
+                    </h2>
                     <div class="subheading">M185300</div>
                     <div class="body-2 grey--text text--darken-2">San Diego, US</div>
                     <div class="body-2 grey--text text--darken-2">Customer for 9 months</div>

@@ -9,7 +9,7 @@
           :items="desserts"
           :pagination.sync="pagination"
           :total-items="totalDesserts"
-          :rows-per-page-items="[10,25,50, 100]"
+          :rows-per-page-items="[25,50,100]"
           :loading="loading"
           class="elevation-1"
         >
@@ -22,9 +22,13 @@
               {{ props.item.city }},&nbsp;{{ props.item.country }}
             </td>
             <td class="text-xs-left">{{ props.item.mailbox }}</td>
-            <td class="text-xs-right">{{ props.item.packages }}</td>
-            <td class="text-xs-right">{{ props.item.lastActiveAt }}</td>
-            <td class="text-xs-right">{{ props.item.createdAt }}</td>
+            <td class="text-xs-left">
+              <!-- <v-chip text-color="white" :color="props.item.planColor">{{props.item.plan}}</v-chip> -->
+              <div>{{props.item.plan}}</div>
+            </td>
+            <td class="text-xs-left">{{ props.item.packages }}</td>
+            <td class="text-xs-left">{{ props.item.lastActiveAt }}</td>
+            <td class="text-xs-left">{{ props.item.createdAt }}</td>
 
             <td class="text-xs-right">{{ props.item.spent }}</td>
           </template>
@@ -45,6 +49,7 @@ export default {
       headers: [
         { text: 'Name', value: 'name' },
         { text: 'Mailbox', value: 'mailbox' },
+        { text: 'Plan', value: 'plan' },
         { text: 'Packages', value: 'packages' },
         { text: 'Last seen', value: 'lastActiveAt' },
         { text: 'First seen', value: 'createdAt' },
@@ -114,6 +119,7 @@ export default {
         {
           name: 'Matthew Perry',
           city: 'Tokyo',
+          plan: 'PREMIUM',
           country: 'JP',
           mailbox: 'R001853',
           packages: '7 Packages',
@@ -124,8 +130,9 @@ export default {
         {
           name: 'Tilda Swinton',
           city: 'London',
+          plan: 'STANDARD',
           country: 'GB',
-          mailbox: '',
+          mailbox: 'R664814',
           packages: '0 Packages',
           createdAt: '3 days ago',
           lastActiveAt: '32 minutes ago',
@@ -134,6 +141,7 @@ export default {
         {
           name: 'Marvin Gay',
           city: 'Kowloon',
+          plan: 'BASIC',
           country: 'HK',
           mailbox: 'R313481',
           packages: '1 Packages',
@@ -144,6 +152,7 @@ export default {
         {
           name: 'Micky Mouse',
           city: 'Orlando',
+          plan: 'STANDARD',
           country: 'US',
           mailbox: 'R957846',
           packages: '40 Packages',
@@ -154,6 +163,7 @@ export default {
         {
           name: 'Giles Murray',
           city: 'London',
+          plan: 'BASIC',
           country: 'GB',
           mailbox: 'R987541',
           packages: '1 Packages',
@@ -164,6 +174,7 @@ export default {
         {
           name: 'Mika Tajima',
           city: 'Osaka',
+          plan: 'BASIC',
           country: 'JP',
           mailbox: '',
           packages: '0 Packages',
@@ -172,8 +183,42 @@ export default {
           spent: '$0.00 spent'
         },
         {
+          name: 'River Phoenix',
+          city: 'London',
+          plan: 'BASIC',
+          country: 'GB',
+          mailbox: 'R987541',
+          packages: '1 Packages',
+          createdAt: '2 weeks ago',
+          lastActiveAt: '1 hour ago',
+          spent: '$28.42 spent'
+        },
+        {
+          name: 'Liberty Phoenix',
+          city: 'Osaka',
+          plan: 'BASIC',
+          country: 'JP',
+          mailbox: '',
+          packages: '0 Packages',
+          createdAt: 'a day ago',
+          lastActiveAt: '1 hour ago',
+          spent: '$0.00 spent'
+        },
+        {
+          name: 'Rain Phoenix',
+          city: 'Krakow',
+          plan: 'BASIC',
+          country: 'PL',
+          mailbox: 'R212645',
+          packages: '1 Packages',
+          createdAt: '12 days ago',
+          lastActiveAt: '12 days ago',
+          spent: '$48.00 spent'
+        },
+        {
           name: 'Pawel Pawlikowski',
           city: 'Krakow',
+          plan: 'STANDARD',
           country: 'PL',
           mailbox: 'R212645',
           packages: '1 Packages',
